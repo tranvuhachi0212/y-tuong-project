@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tạo bộ flashcard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="brand">Flashcard Study</div>
+        <div class="nav-links">
+          <a href="create.html">Tạo bộ</a>
+          <a href="library.html">Thư viện</a>
+          <a href="study.html">Học ngay</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Tạo bộ flashcard mới</h1>
+        <p>Nhập câu hỏi và câu trả lời, sau đó lưu lại để học tiếp sau.</p>
+        <div class="actions">
+          <a class="btn" href="library.html">Xem thư viện</a>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Thông tin bộ flashcard</h2>
+        <label>
+          Tên bộ flashcard
+          <input type="text" placeholder="Ví dụ: Lý thuyết tuần 1" />
+        </label>
+        <label>
+          Câu hỏi
+          <textarea placeholder="Nhập câu hỏi"></textarea>
+        </label>
+        <label>
+          Câu trả lời
+          <textarea placeholder="Nhập câu trả lời"></textarea>
+        </label>
+        <label>
+          Tải file lý thuyết
+          <input type="file" />
+        </label>
+        <button class="btn">Lưu bộ flashcard</button>
+      </section>
+    </main>
+  </body>
+</html>

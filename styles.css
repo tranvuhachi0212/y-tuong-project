@@ -1,0 +1,355 @@
+:root {
+  color-scheme: light;
+  --bg: #fff5fa;
+  --card: #ffffff;
+  --text: #7a3d63;
+  --muted: #a45e87;
+  --primary: #ff5fa2;
+  --primary-dark: #ec4899;
+  --border: #f7c7dc;
+  --success: #f06292;
+  --danger: #e11d48;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(135deg, #fff5fa 0%, #ffe8f2 55%, #ffd9e8 100%);
+  color: var(--text);
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 140px;
+  height: 140px;
+  opacity: 0.95;
+  z-index: 0;
+  pointer-events: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 8px 18px rgba(236, 72, 153, 0.18));
+}
+
+body::before {
+  top: 70px;
+  left: 12px;
+  background-image: url("https://theselfishmeme.co.uk/wp-content/uploads/2025/11/anh-sticker-hello-kitty-meme-bua-16.webp");
+}
+
+body::after {
+  bottom: 20px;
+  right: 16px;
+  background-image: url("https://theselfishmeme.co.uk/wp-content/uploads/2025/11/anh-sticker-hello-kitty-meme-bua-16.webp");
+}
+
+header {
+  background: linear-gradient(135deg, var(--primary), #ff8ab9);
+  color: white;
+  padding: 24px 24px 28px;
+  position: relative;
+  z-index: 1;
+}
+
+nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nav-btn,
+.btn {
+  text-decoration: none;
+  color: white;
+  background: var(--primary);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-btn:hover,
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(236, 72, 153, 0.2);
+}
+
+.btn.secondary {
+  background: #ffe4ee;
+  color: var(--text);
+}
+
+main {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 24px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero,
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 16px 42px rgba(236, 72, 153, 0.14);
+}
+
+.hero {
+  padding: 34px;
+  display: grid;
+  gap: 16px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #ffffff 0%, #fff4f8 100%);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 1.02rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  background: linear-gradient(135deg, #fff7fb, #ffe8f2);
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.1rem;
+}
+
+.panel {
+  padding: 24px;
+  display: none;
+  margin-bottom: 24px;
+}
+
+.panel.active-panel {
+  display: block;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font: inherit;
+  background: #fffdfd;
+}
+
+textarea {
+  min-height: 82px;
+  resize: vertical;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.card-row {
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  display: grid;
+  gap: 8px;
+  background: #fff9fc;
+}
+
+.form-message {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.form-message.success {
+  color: var(--success);
+}
+
+.form-message.error {
+  color: var(--danger);
+}
+
+.deck-list {
+  display: grid;
+  gap: 12px;
+}
+
+.deck-item {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  background: #fff9fc;
+}
+
+.deck-item.active-deck {
+  border-color: var(--primary);
+  background: #ffe8f2;
+}
+
+.deck-item p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.deck-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.empty-state {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.flashcard-card {
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: linear-gradient(135deg, #fff7fb, #ffe8f2);
+  padding: 26px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+  transform: perspective(1000px) rotateX(1deg);
+}
+
+.flashcard-content .label {
+  font-size: 0.95rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.flashcard-content .question {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.flashcard-content .answer,
+.flashcard-content .hint {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.study-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+.status-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: white;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+}
+
+.like-indicator {
+  margin-top: 12px;
+  min-height: 34px;
+}
+
+.like-btn {
+  background: linear-gradient(135deg, #ff5fa2, #ff7eb3);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.summary-box {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #fff9fc;
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 700px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flashcard Học Lý Thuyết</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="brand">🐱 Hello Kitty Flashcards</div>
+        <div class="nav-links">
+          <button class="nav-btn" data-target="createSection">Tạo bộ</button>
+          <button class="nav-btn" data-target="librarySection">Thư viện</button>
+          <button class="nav-btn" data-target="studySection">Học ngay</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Học lý thuyết nhanh như trên Quizlet</h1>
+        <p>Chia nhỏ nội dung thành các câu hỏi và câu trả lời, dễ học, dễ ôn lại và dễ theo dõi tiến độ.</p>
+        <div id="heroStats" class="stats"></div>
+      </section>
+
+      <section class="panel active-panel" id="createSection">
+        <h2>Tạo bộ flashcard</h2>
+        <form id="deckForm">
+          <label>
+            Tên bộ flashcard
+            <input id="deckName" type="text" placeholder="Ví dụ: Lý thuyết tuần 1" required />
+          </label>
+          <div id="cardInputs"></div>
+          <div class="actions">
+            <button type="button" id="addCardBtn" class="btn secondary">+ Thêm thẻ</button>
+            <button type="submit" class="btn">Lưu bộ flashcard</button>
+          </div>
+          <p id="formMessage" class="form-message"></p>
+        </form>
+      </section>
+
+      <section class="panel" id="librarySection">
+        <div class="section-header">
+          <h2>Thư viện bộ flashcard</h2>
+          <button id="clearAllBtn" class="btn secondary">Xóa tất cả</button>
+        </div>
+        <div id="libraryList" class="deck-list"></div>
+      </section>
+
+      <section class="panel" id="studySection">
+        <h2>Học flashcard</h2>
+        <div id="studyStatus"></div>
+        <div id="studyCard" class="flashcard-card"></div>
+        <div id="likeIndicator" class="like-indicator"></div>
+        <div class="actions study-actions">
+          <button id="showAnswerBtn" class="btn">Xem đáp án</button>
+          <button id="rememberBtn" class="btn secondary">Đã nhớ</button>
+          <button id="reviewBtn" class="btn secondary">Cần ôn lại</button>
+        </div>
+        <div class="actions study-actions">
+          <button id="backBtn" class="btn secondary">Back</button>
+          <button id="nextBtn" class="btn">Next</button>
+        </div>
+        <div id="studySummary"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
