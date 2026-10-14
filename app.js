@@ -13,17 +13,17 @@ function getInitialDecks() {
   return [
     {
       id: createId(),
-      name: 'Lý thuyết cơ bản',
+      name: 'Basic Theory',
       createdAt: new Date().toISOString(),
       cards: [
         {
-          question: 'Định nghĩa của học tập là gì?',
-          answer: 'Học tập là quá trình tiếp thu kiến thức, kỹ năng và kinh nghiệm mới.',
+          question: 'What is the definition of learning?',
+          answer: 'Learning is the process of acquiring new knowledge, skills, and experience.',
           status: ''
         },
         {
-          question: 'Tại sao cần ôn tập thường xuyên?',
-          answer: 'Vì việc ôn tập giúp củng cố trí nhớ và tăng khả năng ghi nhớ lâu dài.',
+          question: 'Why is it important to review regularly?',
+          answer: 'Because regular review reinforces memory and improves long-term retention.',
           status: ''
         }
       ]
@@ -78,14 +78,14 @@ function addCardRow(values = { question: '', answer: '' }) {
   row.className = 'card-row';
   row.innerHTML = `
     <label>
-      Câu hỏi
-      <input type="text" class="question-input" value="${values.question.replace(/"/g, '&quot;')}" placeholder="Nhập câu hỏi" />
+      Question
+      <input type="text" class="question-input" value="${values.question.replace(/"/g, '&quot;')}" placeholder="Enter the question" />
     </label>
     <label>
-      Câu trả lời
-      <input type="text" class="answer-input" value="${values.answer.replace(/"/g, '&quot;')}" placeholder="Nhập câu trả lời" />
+      Answer
+      <input type="text" class="answer-input" value="${values.answer.replace(/"/g, '&quot;')}" placeholder="Enter the answer" />
     </label>
-    <button type="button" class="remove-card btn secondary">Xóa</button>
+    <button type="button" class="remove-card btn secondary">Delete</button>
   `;
   container.appendChild(row);
 }
@@ -136,7 +136,7 @@ function handleSaveDeck(event) {
     .filter(Boolean);
 
   if (!name || cards.length === 0) {
-    showFormMessage('Vui lòng nhập tên bộ và ít nhất một thẻ.', 'error');
+    showFormMessage('Please enter a deck name and at least one card.', 'error');
     return;
   }
 
@@ -154,7 +154,7 @@ function handleSaveDeck(event) {
   saveData();
   render();
   resetCreateForm();
-  showFormMessage(`Đã tạo bộ "${name}" thành công.`, 'success');
+  showFormMessage(`Deck "${name}" created successfully.`, 'success');
   showSection('librarySection');
 }
 
@@ -192,7 +192,7 @@ function handleLibraryClick(event) {
 
 function clearAllDecks() {
   if (!decks.length) return;
-  if (!window.confirm('Bạn có chắc muốn xóa tất cả bộ flashcard?')) return;
+  if (!window.confirm('Are you sure you want to delete all flashcard decks?')) return;
 
   decks = [];
   currentDeckId = null;
@@ -238,15 +238,15 @@ function renderHero() {
   heroStats.innerHTML = `
     <div class="stat-card">
       <strong>${totalDecks}</strong>
-      <span>Bộ thẻ</span>
+      <span>Decks</span>
     </div>
     <div class="stat-card">
       <strong>${totalCards}</strong>
-      <span>Tổng thẻ</span>
+      <span>Total Cards</span>
     </div>
     <div class="stat-card">
-      <strong>${selectedDeck ? selectedDeck.name : 'Chưa chọn'}</strong>
-      <span>Đang học</span>
+      <strong>${selectedDeck ? selectedDeck.name : 'None selected'}</strong>
+      <span>Currently Studying</span>
     </div>
   `;
 }
@@ -254,7 +254,7 @@ function renderHero() {
 function renderLibrary() {
   const libraryList = document.getElementById('libraryList');
   if (!decks.length) {
-    libraryList.innerHTML = '<p class="empty-state">Chưa có bộ flashcard nào. Hãy tạo bộ đầu tiên.</p>';
+    libraryList.innerHTML = '<p class="empty-state">No flashcard decks yet. Create your first one.</p>';
     return;
   }
 
@@ -267,11 +267,11 @@ function renderLibrary() {
         <div class="deck-item ${isActive ? 'active-deck' : ''}">
           <div>
             <strong>${deck.name}</strong>
-            <p>${deck.cards.length} thẻ • Đã nhớ ${remembered} • Cần ôn ${review}</p>
+            <p>${deck.cards.length} cards • Remembered ${remembered} • Need review ${review}</p>
           </div>
           <div class="deck-actions">
-            <button class="btn" data-action="select" data-id="${deck.id}">Học</button>
-            <button class="btn secondary" data-action="delete" data-id="${deck.id}">Xóa</button>
+            <button class="btn" data-action="select" data-id="${deck.id}">Study</button>
+            <button class="btn secondary" data-action="delete" data-id="${deck.id}">Delete</button>
           </div>
         </div>
       `;
@@ -286,7 +286,7 @@ function renderStudy() {
   const deck = getCurrentDeck();
 
   if (!deck || !deck.cards.length) {
-    studyCard.innerHTML = '<p class="empty-state">Chưa có bộ thẻ nào để học. Hãy tạo hoặc chọn một bộ flashcard.</p>';
+    studyCard.innerHTML = '<p class="empty-state">No deck to study yet. Create or select a flashcard deck.</p>';
     studyStatus.innerHTML = '';
     studySummary.innerHTML = '';
     return;
@@ -294,7 +294,7 @@ function renderStudy() {
 
   const card = deck.cards[currentCardIndex];
   if (!card) {
-    studyCard.innerHTML = '<p class="empty-state">Bộ thẻ này chưa có thẻ nào.</p>';
+    studyCard.innerHTML = '<p class="empty-state">This deck has no cards yet.</p>';
     studyStatus.innerHTML = '';
     studySummary.innerHTML = '';
     return;
@@ -306,20 +306,20 @@ function renderStudy() {
 
   studyStatus.innerHTML = `
     <div class="study-meta">
-      <span>Đang học: <strong>${deck.name}</strong></span>
-      <span>Thẻ ${currentNumber}/${deck.cards.length}</span>
+      <span>Studying: <strong>${deck.name}</strong></span>
+      <span>Card ${currentNumber}/${deck.cards.length}</span>
     </div>
   `;
 
   studyCard.innerHTML = `
     <div class="flashcard-content">
-      <p class="label">Câu hỏi</p>
+      <p class="label">Question</p>
       <p class="question">${card.question}</p>
-      ${showAnswer ? `<p class="label">Câu trả lời</p><p class="answer">${card.answer}</p>` : '<p class="hint">Nhấn “Xem đáp án” để xem câu trả lời.</p>'}
+      ${showAnswer ? `<p class="label">Answer</p><p class="answer">${card.answer}</p>` : '<p class="hint">Click "Show Answer" to reveal the answer.</p>'}
     </div>
     <div class="status-badges">
-      <span class="badge">Đã nhớ: ${rememberedCount}</span>
-      <span class="badge">Cần ôn: ${reviewCount}</span>
+      <span class="badge">Remembered: ${rememberedCount}</span>
+      <span class="badge">Need Review: ${reviewCount}</span>
     </div>
   `;
 
@@ -330,9 +330,9 @@ function renderStudy() {
 
   studySummary.innerHTML = `
     <div class="summary-box">
-      <p><strong>Tiến độ:</strong> ${rememberedCount + reviewCount}/${deck.cards.length} thẻ đã đánh dấu</p>
-      <p><strong>Đã nhớ:</strong> ${rememberedCount}</p>
-      <p><strong>Cần ôn lại:</strong> ${reviewCount}</p>
+      <p><strong>Progress:</strong> ${rememberedCount + reviewCount}/${deck.cards.length} cards marked</p>
+      <p><strong>Remembered:</strong> ${rememberedCount}</p>
+      <p><strong>Need Review:</strong> ${reviewCount}</p>
     </div>
   `;
 }
